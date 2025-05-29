@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi PWA Simple</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#317EFB" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="contenedor">
+    <div class="caja">
+      <h1>¡Hola, bienvenido!</h1>
+      <p>Ese es el resultado de aprendizaje.</p>
+      <p>El archivo <code>app.js</code> se ejecutó correctamente.</p>
+      <p id="mensaje"></p>
+
+    </div>
+  </div>
+
+ <script src="app.js"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js')
+      .then(reg => {
+        console.log('Service Worker registrado', reg);
+        document.getElementById('mensaje').textContent = " Service Worker registrado correctamente.";
+      })
+      .catch(err => {
+        console.error('Error al registrar el Service Worker', err);
+        document.getElementById('mensaje').textContent = " Error al registrar el Service Worker.";
+      });
+  }
+</script>
+
+</body>
+</html>
